@@ -30,6 +30,8 @@ angular.module('angular-input-stars', [])
             var iconBase = attrs.iconBase || 'fa fa-fw';
             scope.listClass = attrs.listClass || 'angular-input-stars';
             scope.readonly  = ! (attrs.readonly === undefined);
+            var onStarChange = attrs.onStarChange || null;
+            console.log(onStartChange);
 
             ngModelCtrl.$render = function () {
 
@@ -97,6 +99,10 @@ angular.module('angular-input-stars', [])
                 }
 
                 ngModelCtrl.$setViewValue(scope.last_value);
+
+                if(onStarChange){
+                    (onStarChange)()
+                }
 
             };
 
